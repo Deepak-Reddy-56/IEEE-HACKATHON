@@ -560,9 +560,9 @@ closeSettings.addEventListener("click", (e) => {
 });
 saveSettings.addEventListener("click", (e) => {
   e.preventDefault();
-  // const k = apiKeyInput.value.trim();
-  // if (k) localStorage.setItem(LS_KEY, k);
-  // else localStorage.removeItem(LS_KEY);
+  const k = apiKeyInput.value.trim();
+  if (k) localStorage.setItem(LS_KEY, k);
+  else localStorage.removeItem(LS_KEY);
   settingsModal.close();
 });
 
