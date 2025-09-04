@@ -254,7 +254,7 @@ async function analyzeWithGemini(message) {
 }
 
 async function generateSafeReply(message) {
-  const apiKey = getApiKey();
+  const apiKey = "AIzaSyDProgkS5MM96wGe-sUJ5z5f0b0HE95ayY";
   const fallback =
     "Thanks for reaching out. I can’t verify this request or the link provided, so I won’t be sharing any personal information. If this is legitimate, please contact me through an official channel I can independently verify.";
 
@@ -551,7 +551,7 @@ messageInput.addEventListener("input", () => {
 
 // Settings modal
 settingsBtn.addEventListener("click", () => {
-  apiKeyInput.value = getApiKey();
+  apiKeyInput.value = "AIzaSyDProgkS5MM96wGe-sUJ5z5f0b0HE95ayY";
   settingsModal.showModal();
 });
 closeSettings.addEventListener("click", (e) => {
@@ -560,9 +560,9 @@ closeSettings.addEventListener("click", (e) => {
 });
 saveSettings.addEventListener("click", (e) => {
   e.preventDefault();
-  const k = apiKeyInput.value.trim();
-  if (k) localStorage.setItem(LS_KEY, k);
-  else localStorage.removeItem(LS_KEY);
+  // const k = apiKeyInput.value.trim();
+  // if (k) localStorage.setItem(LS_KEY, k);
+  // else localStorage.removeItem(LS_KEY);
   settingsModal.close();
 });
 
