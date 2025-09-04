@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+  <title>Phishing Shield</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="min-h-screen bg-night text-slate-100">
+  <header class="w-full">
+    <nav
+      class="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between"
+      aria-label="Top Navigation"
+    >
+      <div class="flex items-center space-x-3">
+        <span
+          class="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-cyan-400 shadow-lg"
+          aria-hidden="true"
+        >
+          🛡️
+        </span>
+        <h1 class="text-2xl md:text-3xl font-extrabold logo-text">
+          PHISHING SHIELD
+        </h1>
+      </div>
+
+      <div class="flex items-center space-x-2">
+        <button id="sample-btn" class="y2k-button text-sm md:text-base">
+          Paste Sample
+        </button>
+        <button id="settings-btn" class="y2k-button text-sm md:text-base" aria-haspopup="dialog" aria-controls="settings-modal">
+          ⚙️ Settings
+        </button>
+        <a
+          href="#learn"
+          class="hidden sm:inline-block y2k-button text-sm md:text-base"
+        >
+          Learn
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="px-4 pb-16">
+    <section
+      class="mx-auto max-w-5xl y2k-container"
+      aria-labelledby="analyzer-title"
+    >
+      <h2 id="analyzer-title" class="sr-only">Phishing Analyzer</h2>
+
+      <p class="text-base md:text-lg mb-6 text-center">
+        Paste any message below. Get
+        <span class="font-semibold">real-time</span> risk signals and an
+        optional AI verdict.
+      </p>
+
+      <div class="mb-3 flex items-center justify-between">
+        <label for="message-input" class="font-semibold">Message</label>
+
+        <label class="inline-flex items-center space-x-2 text-sm select-none">
+          <input type="checkbox" id="live-scan-toggle" class="toggle" checked />
+          <span>Live scan</span>
+        </label>
+      </div>
+
+      <textarea
+        id="message-input"
+        rows="8"
+        placeholder="Paste your email, DM, or SMS here…"
+        class="y2k-input w-full resize-y"
+        aria-describedby="char-count"
+      ></textarea>
+
+      <div
+        id="char-count"
+        class="mt-2 text-xs text-slate-300 text-right"
+        aria-live="polite"
+      >
+        0 characters
+      </div>
+
+      <div
+        class="flex flex-col md:flex-row justify-center gap-3 mt-6 w-full"
+        role="group"
+        aria-label="Actions"
+      >
+        <button id="analyze-button" class="y2k-button flex-1 font-bold">
+          ANALYZE (AI + Heuristics)
+        </button>
+        <button id="reply-button" class="y2k-button flex-1 font-bold">
+          ✨ GENERATE SAFE REPLY ✨
+        </button>
+        <button id="clear-button" class="y2k-button-secondary flex-1 font-bold">
+          Clear
+        </button>
+      </div>
+
+      <!-- Risk Meter -->
+      <div class="mt-8" aria-live="polite" aria-atomic="true">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-semibold">Risk Meter</span>
+          <span id="risk-label" class="text-sm px-2 py-1 rounded-lg bg-slate-800">
+            Unknown
+          </span>
+        </div>
+        <div class="risk-bar">
+          <div id="risk-fill" class="risk-fill" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div id="result-container" class="mt-8 w-full hidden">
+        <div
+          id="loading-indicator"
+          class="flex justify-center items-center gap-3"
+        >
+          <span class="dot-pulse"></span>
+          <p class="text-slate-100 text-lg">Analyzing…</p>
+        </div>
+
+        <div
+          id="analysis-result"
+          class="y2k-result transition-all duration-500 ease-in-out transform"
+          aria-live="polite"
+          aria-atomic="true"
+        ></div>
+      </div>
+
+      <!-- Links Found -->
+      <div id="links-panel" class="mt-8 hidden">
+        <h3 class="text-xl font-bold mb-3">Links Found</h3>
+        <ul id="links-list" class="space-y-2"></ul>
+      </div>
+
+      <!-- Education -->
+      <div id="learn" class="mt-12">
+        <h3 class="text-xl font-bold mb-3">Why this helps</h3>
+        <ul class="list-disc ml-6 space-y-1 text-sm leading-relaxed">
+          <li>
+            <strong>Real-time signals:</strong> urgency words, payment/credential
+            requests, link oddities (e.g., <code>.zip</code> TLDs, IP-only hosts, many dots,
+            <code>@</code> in URL).
+          </li>
+          <li>
+            <strong>AI verdict (optional):</strong> When enabled, we blend
+            local heuristics with a Gemini summary for clarity.
+          </li>
+          <li>
+            <strong>Privacy first:</strong> You choose if content goes to an AI
+            service. Heuristics run locally in your browser.
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Settings Modal -->
+  <dialog id="settings-modal" class="settings-modal">
+    <form method="dialog" class="settings-card">
+      <header class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-bold">Settings</h2>
+        <button id="close-settings" class="y2k-button-secondary">✖</button>
+      </header>
+
+      <div class="space-y-4">
+        <div>
+          <label for="api-key" class="block text-sm font-semibold mb-1">
+            Gemini API Key
+          </label>
+          <input
+            id="api-key"
+            type="password"
+            placeholder="••••••••••••••••"
+            class="y2k-input w-full"
+            autocomplete="off"
+          />
+          <p class="mt-2 text-xs text-slate-300">
+            Stored locally in your browser for demo purposes. For production,
+            proxy requests server-side to keep keys secret.
+          </p>
+        </div>
+      </div>
+
+      <footer class="mt-6 flex items-center justify-end gap-2">
+        <button class="y2k-button-secondary">Cancel</button>
+        <button id="save-settings" class="y2k-button">Save</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- App JS -->
+  <script src="script.js" defer></script>
+  <noscript>
+    <p class="text-center text-red-400">
+      JavaScript is required for this application.
+    </p>
+  </noscript>
+</body>
+</html>
