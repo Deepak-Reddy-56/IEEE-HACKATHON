@@ -152,6 +152,8 @@ function scoreHeuristics(text) {
   const linkFindings = analyzeLinks(urls);
 
   // Score components (normalized)
+  const httpLinks = urls.filter(u => u.startsWith("http://")).length;
+  const httpLinkScore = httpLinks > 0 ? 50 : 0;
   const urgencyScore = Math.min(urgCount * 20, 50);       // max 20
   const credsScore = Math.min(credCount * 20, 40);        // max 20
   const moneyScore = Math.min(moneyCount * 20, 50);       // max 15
