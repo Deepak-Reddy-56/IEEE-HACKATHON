@@ -152,12 +152,12 @@ function scoreHeuristics(text) {
   const linkFindings = analyzeLinks(urls);
 
   // Score components (normalized)
-  const urgencyScore = Math.min(urgCount * 5, 40);       // max 20
-  const credsScore = Math.min(credCount * 5, 30);        // max 20
-  const moneyScore = Math.min(moneyCount * 5, 50);       // max 15
-  const brandScore = brandCount >= 1 ? 10 : 0;           // max 10
-  const shoutScore = Math.min(shouty * 3, 20);           // max 10
-  const exclScore = Math.min(excls * 2, 20);             // max 10
+  const urgencyScore = Math.min(urgCount * 20, 50);       // max 20
+  const credsScore = Math.min(credCount * 20, 40);        // max 20
+  const moneyScore = Math.min(moneyCount * 20, 50);       // max 15
+  const brandScore = brandCount >= 1 ? 25 : 0;           // max 10
+  const shoutScore = Math.min(shouty * 20, 20);           // max 10
+  const exclScore = Math.min(excls * 20, 50);             // max 10
   const linkScore = Math.min(urls.length * 5, 30);
   const susscore = Math.min(suspicious * 70, 90);        
   let linkFlagsScore = 0;
