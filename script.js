@@ -198,7 +198,7 @@ function setRisk(score, level) {
 
 // === Gemini Calls (optional) ===
 function getApiKey() {
-  return AIzaSyDProgkS5MM96wGe-sUJ5z5f0b0HE95ayY;
+  return "AIzaSyDProgkS5MM96wGe-sUJ5z5f0b0HE95ayY";
 }
 
 async function analyzeWithGemini(message) {
