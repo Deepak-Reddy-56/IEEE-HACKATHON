@@ -64,7 +64,7 @@ const WORDS_CREDS = [
   "password","passcode","otp","one-time","one time","2fa","verification code","login","log in","sign in","credentials","account details",
 ];
 const WORDS_MONEY = [
-  "gift card","crypto","bitcoin","wire","bank transfer","western union","payment","invoice","refund","prize","lottery","cash","paypal","phonePe","Gpay",
+  "gift card","crypto","bitcoin","wire","bank transfer","western union","payment","invoice","refund","prize","lottery","cash","paypal","phonePe","Gpay","Free gift","prize winner","you've won","exclusive offer","new job opportunity","you won't believe","secret","see who viewed your profile",
 ];
 const SUSPICIOUS_TLDS = ["zip","mov","gq","tk","ml","cf","ga","top","virus","malware","ly"];
 const BRAND_KEYWORDS = ["microsoft1","google1","apple0","paypal-1","amazon01","bank","netflix2","netmirror","bitcoin"];
