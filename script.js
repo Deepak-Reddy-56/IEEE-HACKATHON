@@ -238,8 +238,8 @@ function getApiKey() {
   if (stored && stored.trim()) return stored.trim();
   const inputVal = apiKeyInput?.value?.trim();
   if (inputVal) return inputVal;
-  // NOTE: demo fallback key (kept for backward compatibility)
-  return "AIzaSyDProgkS5MM96wGe-sUJ5z5f0b0HE95ayY";
+  // No fallback key to avoid exposing secrets; require user-provided key
+  return null;
 }
 
 async function analyzeWithGemini(message) {
