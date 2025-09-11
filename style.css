@@ -228,3 +228,12 @@ body {
   border-radius: 16px;
   width: 100%;
 }
+
+/* Masked preview formatting */
+.masked-preview {
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+  max-height: 240px;
+  overflow: auto;
+  padding: 1rem;
+}

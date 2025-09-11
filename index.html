@@ -106,6 +106,9 @@
         <button id="reply-button" class="y2k-button flex-1 font-bold">
           ✨ GENERATE SAFE REPLY ✨
         </button>
+        <button id="consent-button">
+          <!-- Send (Consent) to Gemini -->
+        </button>
         <button id="clear-button" class="y2k-button-secondary flex-1 font-bold">
           Clear
         </button>
@@ -200,6 +203,39 @@
       <footer class="mt-6 flex items-center justify-end gap-2">
         <button class="y2k-button-secondary">Cancel</button>
         <button id="save-settings" class="y2k-button">Save</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- Consent Modal -->
+  <dialog id="consent-modal" class="settings-modal">
+    <form method="dialog" class="settings-card" onsubmit="return false;">
+      <header class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-bold">Send (consent) to Gemini — Masked Preview</h2>
+        <button id="cancel-consent" class="y2k-button-secondary">✖</button>
+      </header>
+
+      <div class="space-y-4">
+        <div>
+          <p class="text-sm text-slate-300">
+            We will <strong>mask names, addresses, phone numbers, emails, account numbers, PINs, and card numbers</strong> before sending. The masked text below is what will be transmitted.
+          </p>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Masked Preview</label>
+          <pre id="masked-preview" class="masked-preview y2k-input" role="region" aria-live="polite">—</pre>
+        </div>
+
+        <div class="flex items-center space-x-3">
+          <input type="checkbox" id="consent-checkbox" class="toggle" />
+          <label for="consent-checkbox" class="text-sm">I consent to send the masked content to Gemini.</label>
+        </div>
+      </div>
+
+      <footer class="mt-6 flex items-center justify-end gap-2">
+        <button id="send-consent-btn" class="y2k-button" disabled>Send Masked Content</button>
+        <button id="close-consent-btn" class="y2k-button-secondary">Close</button>
       </footer>
     </form>
   </dialog>
