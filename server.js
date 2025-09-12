@@ -1,6 +1,7 @@
 // server.js (Node.js/Express example)
 const express = require('express');
 const fetch = require('node-fetch');
+require('dotenv').config();
 
 app.post('/api/analyze', async (req, res) => {
   const { message } = req.body;
